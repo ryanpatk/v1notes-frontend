@@ -1,15 +1,19 @@
-import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Routes,
   Navigate,
 } from 'react-router-dom';
+import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+
 import { AuthProvider, useAuth } from './contexts/auth-context';
-import Login from './components/login';
-import Dashboard from './components/dashboard';
-import NoteEditor from './components/note-editor';
+import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import NoteEditor from './components/NoteEditor';
+
+// need this for tailwind
+import './index.css';
 
 const queryClient = new QueryClient();
 

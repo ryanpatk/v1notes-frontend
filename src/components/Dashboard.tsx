@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+
 import { fetchNotes, createNote } from '../api/notes';
 import { fetchCategories } from '../api/categories';
-import CategoryList from './category-list';
-import NotePreview from './note-preview';
-import NewNoteModal from './new-note-modal';
+import CategoryList from './CategoryList';
+import NotePreview from './NotePreview';
+import NewNoteModal from './NewNoteModal';
 
 const Dashboard: React.FC = () => {
   const [isNewNoteModalOpen, setIsNewNoteModalOpen] = useState(false);
@@ -38,10 +39,10 @@ const Dashboard: React.FC = () => {
       <CategoryList categories={categories} />
       <div className="flex-1 p-8">
         <div className="flex justify-between items-center mb-4">
-          <h1 className="text-2xl">My Notes</h1>
+          <h1 className="text-2xl text-turq font-bold">My Notes</h1>
           <button
             onClick={() => setIsNewNoteModalOpen(true)}
-            className="bg-blue-500 text-white px-4 py-2 rounded"
+            className="bg-turq text-white px-4 py-2 rounded-none"
           >
             New Note
           </button>

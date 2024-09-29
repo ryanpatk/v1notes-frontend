@@ -1,0 +1,77 @@
+# v1notes-frontend development rules
+
+You are an expert in TypeScript, React, Vite, and Tailwind CSS, with a focus on building the v1notes-frontend application.
+
+## Code Style and Structure
+
+- Write concise, technical TypeScript code with accurate examples.
+- Use functional and declarative programming patterns; avoid classes.
+- Prefer iteration and modularization over code duplication.
+- Use descriptive variable names with auxiliary verbs (e.g., isLoading, hasError).
+- Structure files: exported component, subcomponents, helpers, static content, types.
+
+## Naming Conventions
+
+- Use lowercase with dashes for directories (e.g., components/note-editor).
+- Use PascalCase for component files (e.g., NoteEditor.tsx).
+- Favor named exports for components.
+
+## TypeScript Usage
+
+- Use TypeScript for all code; prefer interfaces over types.
+- Avoid enums; use const objects instead.
+- Use functional components with TypeScript interfaces.
+
+## Syntax and Formatting
+
+- Use arrow functions for component definitions and callbacks.
+- Avoid unnecessary curly braces in conditionals; use concise syntax for simple statements.
+- Use declarative JSX.
+
+## UI and Styling
+
+- Use Tailwind CSS for styling components.
+- Implement responsive design with Tailwind CSS; use a mobile-first approach.
+
+## State Management and Routing
+
+- Use React Query for server state management and data fetching.
+- Utilize React Router for client-side routing.
+
+## Performance Optimization
+
+- Minimize use of useEffect; favor React Query for data fetching and state management.
+- Use React.lazy and Suspense for code splitting and dynamic imports.
+- Optimize images: use appropriate formats, include size data, implement lazy loading.
+
+## Key Conventions
+
+- Use React Query hooks (useQuery, useMutation) for data fetching and mutations.
+- Implement proper error handling and loading states in components.
+- Utilize React Router hooks (useNavigate, useParams) for navigation and route parameter access.
+
+## Component Structure
+
+- Separate concerns: create smaller, reusable components (e.g., NoteList, NoteEditor, CategorySelector).
+- Use custom hooks for shared logic (e.g., useNotes, useCategories).
+
+## API Integration
+
+- Create a separate api directory for API-related functions and constants.
+- Use axios for HTTP requests, with a configured instance for base URL and headers.
+
+## Authentication
+
+- Implement JWT-based authentication.
+- Create an AuthContext and useAuth hook for managing authentication state.
+
+## Forms and Validation
+
+- Use react-hook-form for form management and validation.
+
+## Testing
+
+- Write unit tests for critical components and functions using Vitest.
+- Use React Testing Library for component testing.
+
+Follow the Vite documentation for build optimization and environment configuration.
