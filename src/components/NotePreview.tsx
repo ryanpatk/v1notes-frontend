@@ -13,13 +13,11 @@ interface NotePreviewProps {
 
 const NotePreview: React.FC<NotePreviewProps> = ({ note }) => {
   return (
-    <div className="bg-gray-100 p-2 border border-gray-400">
-      <div className="bg-white p-4 border border-gray-400">
-        <p className="text-turq mb-2">{note.content.substring(0, 100)}...</p>
+    <div className="flex flex-col bg-gray-300 h-[196px] p-3 border border-turq-3">
+      <div className="bg-gray-200 flex-grow p-4 border border-turq-3 overflow-y-auto">
+        <p className="text-turq-3 mb-2">{note.content}</p>
       </div>
-
-      {/* <span className="text-sm text-turq">{note.category}</span> */}
-      <h3 className="text-turq text-lg font-semibold mb-2">{note.title}</h3>
+      <h3 className="text-turq-3 text-md font-semibold mt-2 mb-1">{note.title}</h3>
     </div>
   );
 };

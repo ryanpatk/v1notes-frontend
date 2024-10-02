@@ -8,11 +8,17 @@ interface Category {
   name: string;
 }
 
-interface CategoryListProps {
+interface CategoriesListProps {
   categories: Category[];
+  selectedCategoryId: string | null;
+  setSelectedCategoryId: (id: string | null) => void;
 }
 
-const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
+const CategoriesList: React.FC<CategoriesListProps> = ({
+  categories,
+  selectedCategoryId,
+  setSelectedCategoryId,
+}) => {
   const [newCategoryName, setNewCategoryName] = useState('');
   const queryClient = useQueryClient();
 
@@ -32,29 +38,45 @@ const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
   };
 
   return (
-    <div className="w-64 bg-gray-100 p-4 hidden md:block relative h-screen border-r border-gray-400">
-      <h2 className="text-xl mb-4 text-turq font-bold">Categories</h2>
+    <div className="w-64 bg-gray-300 p-4 hidden md:block relative h-screen border-r border-turq-3">
+      <h2 className="text-md mb-4 text-turq-3 font-bold">Categories</h2>
       <ul className="overflow-y-auto h-[calc(100%-12rem)]">
         {categories?.map((category) => (
-          <li key={category.id} className="mb-2">
-            <span className="text-turq">{category.name}</span>
+          <li
+            key={category.id}
+            className="mb-2 cursor-pointer"
+            onClick={() => {
+              if (selectedCategoryId === category.id) {
+                setSelectedCategoryId(null);
+              } else {
+                setSelectedCategoryId(category.id);
+              }
+            }}
+          >
+            <span
+              className={`text-turq-3 ${
+                selectedCategoryId === category.id ? 'font-bold' : ''
+              }`}
+            >
+              {category.name}
+            </span>
           </li>
         ))}
       </ul>
       <form
         onSubmit={handleSubmit}
-        className="absolute bottom-0 left-0 right-0 p-4 border-t border-gray-400"
+        className="absolute bottom-0 left-0 right-0 p-4 border-t border-turq-3"
       >
         <input
           type="text"
           value={newCategoryName}
           onChange={(e) => setNewCategoryName(e.target.value)}
           placeholder="New category name"
-          className="w-full p-2 mb-2 border bg-white border-gray-400"
+          className="w-full p-2 mb-2 border bg-white border-turq-3"
         />
         <button
           type="submit"
-          className="w-full p-2 bg-turq text-white rounded-none"
+          className="w-full p-2 bg-gray-200 text-white rounded-none"
         >
           Add Category
         </button>
@@ -63,4 +85,4 @@ const CategoryList: React.FC<CategoryListProps> = ({ categories }) => {
   );
 };
 
-export default CategoryList;
+export default CategoriesList;

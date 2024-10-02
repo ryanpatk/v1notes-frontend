@@ -10,7 +10,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { AuthProvider, useAuth } from './contexts/auth-context';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
-import NoteEditor from './components/NoteEditor';
 
 // need this for tailwind
 import './index.css';
@@ -26,18 +25,10 @@ const App: React.FC = () => {
             <Routes>
               <Route path="/" element={<Login />} />
               <Route
-                path="/dashboard"
+                path="/app"
                 element={
                   <PrivateRoute>
                     <Dashboard />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/note/:id"
-                element={
-                  <PrivateRoute>
-                    <NoteEditor />
                   </PrivateRoute>
                 }
               />

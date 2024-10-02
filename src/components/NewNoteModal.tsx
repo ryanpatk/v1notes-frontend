@@ -34,7 +34,7 @@ const NewNoteModal: React.FC<NewNoteModalProps> = ({
   return (
     <div className="fixed inset-0 bg-gray-600 bg-opacity-50 overflow-y-auto h-full w-full">
       <div className="relative top-20 mx-auto p-5 border w-96 shadow-lg rounded-md bg-white">
-        <h3 className="text-lg font-medium leading-6 text-turq mb-4">
+        <h3 className="text-md font-medium leading-6 text-turq-3 mb-4">
           Create New Note
         </h3>
         <form onSubmit={handleSubmit}>
@@ -67,13 +67,13 @@ const NewNoteModal: React.FC<NewNoteModalProps> = ({
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 bg-gray-200 text-turq rounded mr-2"
+              className="px-4 py-2 bg-gray-200 text-turq-3 rounded mr-2"
             >
               Cancel
             </button>
             <button
               type="submit"
-              className="px-4 py-2 bg-turq text-turq rounded"
+              className="px-4 py-2 bg-gray-200 text-turq-3 rounded"
             >
               Create Note
             </button>
