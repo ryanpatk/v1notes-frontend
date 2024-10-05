@@ -7,6 +7,7 @@ import CategoriesList from './CategoriesList';
 import NewNoteModal from './NewNoteModal';
 import NotePreview from './NotePreview';
 import NoteEditor from './NoteEditor';
+import Picker from './Picker';
 
 const Dashboard: React.FC = () => {
   const queryClient = useQueryClient();
@@ -23,11 +24,15 @@ const Dashboard: React.FC = () => {
     error: notesError,
   } = useQuery({ queryKey: ['notes'], queryFn: fetchNotes });
 
+  console.log('notes', notes);
+
   const {
     data: categories,
     isLoading: isCategoriesLoading,
     error: categoriesError,
   } = useQuery({ queryKey: ['categories'], queryFn: fetchCategories });
+
+  console.log('categories', categories);
 
   const createNoteMutation = useMutation({
     mutationFn: createNote,
@@ -45,6 +50,11 @@ const Dashboard: React.FC = () => {
     return <div>Error fetching data</div>;
   }
 
+  const categoryOptions = categories?.map((category) => ({
+    key: category.id,
+    label: category.name,
+  }));
+
   return (
     <div className="flex min-h-screen w-screen bg-gray-300">
       <CategoriesList
@@ -52,7 +62,7 @@ const Dashboard: React.FC = () => {
         selectedCategoryId={selectedCategoryId}
         setSelectedCategoryId={setSelectedCategoryId}
       />
-      <div className="flex-1 p-8 flex flex-col">
+      <div className="flex-1 flex flex-col p-8 h-screen overflow-y-auto">
         {selectedNoteId ? (
           <NoteEditor
             noteId={selectedNoteId}
@@ -71,13 +81,20 @@ const Dashboard: React.FC = () => {
                 New Note
               </button>
             </div>
-            <div className="overflow-y-auto flex-1">
+            <div className="md:hidden mb-4">
+              <Picker
+                label="Category"
+                options={categoryOptions}
+                onChange={setSelectedCategoryId}
+              />
+            </div>
+            <div className="flex-1">
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 {notes?.map((note) => (
                   <div
                     key={note.id}
                     onClick={() => setSelectedNoteId(note.id)}
-                    className="h-[196px] cursor-pointer"
+                    className="cursor-pointer"
                   >
                     <NotePreview note={note} />
                   </div>

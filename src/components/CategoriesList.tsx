@@ -71,12 +71,12 @@ const CategoriesList: React.FC<CategoriesListProps> = ({
           type="text"
           value={newCategoryName}
           onChange={(e) => setNewCategoryName(e.target.value)}
-          placeholder="New category name"
-          className="w-full p-2 mb-2 border bg-white border-turq-3"
+          placeholder="Enter category"
+          className="w-full p-2 mb-2 border bg-white border-turq-3 text-turq-3"
         />
         <button
           type="submit"
-          className="w-full p-2 bg-gray-200 text-white rounded-none"
+          className="w-full bg-gray-400 text-white px-4 py-2 rounded-none hover:bg-gray-500 transition-colors"
         >
           Add Category
         </button>
